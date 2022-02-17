@@ -46,20 +46,8 @@ public class TaikoDiscordPlugin : BaseUnityPlugin {
             _ => BepInEx.Logging.LogLevel.All
         }, message));
 
-        // new Harmony("ca.sanae.taikodisgd").Patch(
-        //     AccessTools.PropertySetter(typeof(EnsoPlayingParameter), nameof(EnsoPlayingParameter.IsPause)),
-        //     new HarmonyMethod(AccessTools.Method(GetType(), nameof(HandlePause))
-        //     )
-        // );
-
         SceneManager.sceneLoaded += SceneLoaded;
     }
-
-    // public static void HandlePause([HarmonyArgument(0)] ref bool isPaused) {
-    //     if (isPaused) {
-    //         
-    //     }
-    // }
 
     private void SceneLoaded(Scene scene, LoadSceneMode mode) {
         // cleanup old stuff
@@ -167,7 +155,6 @@ public class TaikoDiscordPlugin : BaseUnityPlugin {
         return dictionary[id];
     }
 
-    // Doesn't need to be run every frame :)
     private void FixedUpdate() {
         switch (Current) {
             case CurrentScene.SongSelect: {
