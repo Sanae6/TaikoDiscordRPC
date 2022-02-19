@@ -141,10 +141,6 @@ public class TaikoDiscordPlugin : BaseUnityPlugin {
     public static FieldInfo EnsoState => AccessTools.Field(typeof(EnsoGameManager), nameof(EnsoGameManager.state));
     public static FieldInfo EnsoParam => AccessTools.Field(typeof(EnsoGameManager), nameof(EnsoGameManager.ensoParam));
 
-    private void Update() {
-        Client.RunCallbacks();
-    }
-
     // SongInfoPlayer.GetSongName
     private string GetSongName(string id) {
         Regex regex = new Regex("song_");
@@ -155,7 +151,8 @@ public class TaikoDiscordPlugin : BaseUnityPlugin {
         return dictionary[id];
     }
 
-    private void FixedUpdate() {
+    private void Update() {
+        Client.RunCallbacks();
         switch (Current) {
             case CurrentScene.SongSelect: {
                 if (SelectManager is null) return;
